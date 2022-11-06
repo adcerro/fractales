@@ -1,6 +1,6 @@
 import numpy as np
 from PIL import Image
-
+from turtle import *
 def sierpinsky(n):
     if(n>=0):
         #code  to draw the carpet taken from https://www.geeksforgeeks.org/python-sierpinski-carpet/  
@@ -29,10 +29,32 @@ def sierpinsky(n):
         if(n==0):
             area=0
         else:
-            area =((-7*(size**2)/9)-(size**2)*(1/9**n-1))/size*100
+            area =((-7*(size**2)/9)-(size**2)*(1/9**n-1))/(size**2)*100
         print(f'Area ocuapada(blanco): {area}%')
     else:
         print('n no valido')
+
+def hafferman(n):
+    setworldcoordinates(0,n*100,n*100,0)
+    boxdraw(0,0,n*100,n*100,'black')
+    mainloop()
+
+def boxdraw(x,y,a,b,color):
+    up()
+    goto(x,y)
+    down()
+    begin_fill()
+    left(90) 
+    forward(b)
+    right(90)
+    forward(a)
+    right(90)   
+    forward(b)
+    fillcolor(color)
+    right(90)
+    forward(a)
+    right(180)
+    end_fill()
 
 opt=0
 while(opt==0):
@@ -44,6 +66,6 @@ while(opt==0):
         opt=0
 
 if(opt==1):
-    n = int(input('Digite n: '))
+    n = int(input('Digite n mayor o igual a 0: '))
     sierpinsky(n)
     

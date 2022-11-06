@@ -1,4 +1,3 @@
-from textwrap import fill
 from turtle import *
 reset()
 setworldcoordinates(0,900,900,0)
