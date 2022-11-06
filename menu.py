@@ -53,22 +53,20 @@ def hafferman(n):
         print('n no valido')
 
 def haff(n,x,y,a):
-    print(x)
-    print(y)
-    print(a)
     divide = a//3
-    print(divide)
     boxdraw(x,y,divide,divide,'black')
-    if(n>1 and n%2!=0):          
-        haff(n-1,x-divide,y-divide,divide*3)
-        haff(n-1,x+divide,y+divide,divide*3)
-        haff(n-1,x+divide,y-divide,divide*3)
-        haff(n-1,x-divide,y+divide,divide*3)
-    if(n%2==0):
-        haff(n-1,x,y-divide,divide)
-        haff(n-1,x+divide,y,divide)
-        haff(n-1,x,y+divide,divide)
-        haff(n-1,x-divide,y,divide)
+    if(n>1):
+        if(n%2!=0):
+            haff(n-1,x-divide,y-divide,divide*3)
+            haff(n-1,x+divide,y+divide,divide*3)
+            haff(n-1,x+divide,y-divide,divide*3)
+            haff(n-1,x-divide,y+divide,divide*3)
+        else:
+            haff(n-1,x+divide,y,divide)
+            haff(n-1,x,y-divide,divide)
+            haff(n-1,x,y,divide)
+            haff(n-1,x,y,divide)
+
 
         
 
