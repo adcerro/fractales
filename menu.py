@@ -36,12 +36,21 @@ def sierpinsky(n):
         print('n no valido')
 
 def hafferman(n):
-    reset()
-    speed(0)
-    setworldcoordinates(0,n*100,n*100,0)
-    #boxdraw(0,0,n*100,n*100,'black')
-    haff(n,n*100//3,n*100//3,n*100)
-    mainloop()
+    if(n>=0):
+        reset()
+        speed(0)
+        setworldcoordinates(0,n*100,n*100,0)
+        #boxdraw(0,0,n*100,n*100,'black')
+        haff(n,n*100//3,n*100//3,n*100)
+        mainloop()
+        f=np.zeros(n+2)
+        f[0]=0
+        for i in range(1,n+1):
+            f[i] = f[i-1]+8**(i-1)/9**(i+1)
+        area =f[n]
+        print(f'Area ocuapada(negro): {area}%')
+    else:
+        print('n no valido')
 
 def haff(n,x,y,a):
     print(x)
@@ -49,21 +58,18 @@ def haff(n,x,y,a):
     print(a)
     divide = a//3
     print(divide)
-    if(x>=0 and y>=0 and x<=n*100 and y<=n*100):
-        boxdraw(x,y,divide,divide,'black')
-    if(n>1):        
-        if(n%2!=0):
-            haff(n-1,x-divide,y-divide,divide*3)
-            haff(n-1,x+divide,y+divide,divide*3)
-            haff(n-1,x+divide,y-divide,divide*3)
-            haff(n-1,x-divide,y+divide,divide*3)
-        
-        if(n%2==0):
-            haff(n-1,x,y+divide,divide)
-            haff(n-1,x+divide,y,divide)
-            haff(n-1,x-divide,y,divide)
-            haff(n-1,x,y-divide,divide)
-        
+    boxdraw(x,y,divide,divide,'black')
+    if(n>1 and n%2!=0):          
+        haff(n-1,x-divide,y-divide,divide*3)
+        haff(n-1,x+divide,y+divide,divide*3)
+        haff(n-1,x+divide,y-divide,divide*3)
+        haff(n-1,x-divide,y+divide,divide*3)
+    if(n%2==0):
+        haff(n-1,x,y-divide,divide)
+        haff(n-1,x+divide,y,divide)
+        haff(n-1,x,y+divide,divide)
+        haff(n-1,x-divide,y,divide)
+
         
 
 
