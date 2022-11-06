@@ -26,18 +26,27 @@ def sierpinsky(n):
   
         i = Image.open("sierpinski.jpg")
         i.show()
-        if(n==0):
-            area=0
-        else:
-            area =((-7*(size**2)/9)-(size**2)*(1/9**n-1))/(size**2)*100
+        f=np.zeros(n+2)
+        f[0]=0
+        for i in range(1,n+1):
+            f[i] = f[i-1]+8**(i-1)/9**(i)
+        area =f[n]
         print(f'Area ocuapada(blanco): {area}%')
     else:
         print('n no valido')
 
 def hafferman(n):
+    speed(0)
     setworldcoordinates(0,n*100,n*100,0)
     boxdraw(0,0,n*100,n*100,'black')
+    haff(n,n*49,n*49,n*100)
     mainloop()
+
+def haff(n,x,y,a):
+    divide = a//3
+    boxdraw(x,y,divide,divide,'white')
+    if(n>0):
+        haff(n-1,x+divide,y+divide,divide)
 
 def boxdraw(x,y,a,b,color):
     up()
@@ -60,7 +69,7 @@ opt=0
 while(opt==0):
     print('Menu')
     print('1- Sirpinsky')
-    print('2- Indefinido')
+    print('2- Hafferman')
     opt = int(input('Seleccione una opción: '))
     if(opt>2 or opt<1):
         opt=0
@@ -68,4 +77,7 @@ while(opt==0):
 if(opt==1):
     n = int(input('Digite n mayor o igual a 0: '))
     sierpinsky(n)
+else:
+     n = int(input('Digite n mayor o igual a 1: '))
+     hafferman(n)
     
