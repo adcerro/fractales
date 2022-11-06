@@ -36,17 +36,36 @@ def sierpinsky(n):
         print('n no valido')
 
 def hafferman(n):
+    reset()
     speed(0)
     setworldcoordinates(0,n*100,n*100,0)
-    boxdraw(0,0,n*100,n*100,'black')
-    haff(n,n*49,n*49,n*100)
+    #boxdraw(0,0,n*100,n*100,'black')
+    haff(n,n*100//3,n*100//3,n*100)
     mainloop()
 
 def haff(n,x,y,a):
+    print(x)
+    print(y)
+    print(a)
     divide = a//3
-    boxdraw(x,y,divide,divide,'white')
-    if(n>0):
-        haff(n-1,x+divide,y+divide,divide)
+    print(divide)
+    if(x>=0 and y>=0 and x<=n*100 and y<=n*100):
+        boxdraw(x,y,divide,divide,'black')
+    if(n>1):        
+        if(n%2!=0):
+            haff(n-1,x-divide,y-divide,divide*3)
+            haff(n-1,x+divide,y+divide,divide*3)
+            haff(n-1,x+divide,y-divide,divide*3)
+            haff(n-1,x-divide,y+divide,divide*3)
+        
+        if(n%2==0):
+            haff(n-1,x,y+divide,divide)
+            haff(n-1,x+divide,y,divide)
+            haff(n-1,x-divide,y,divide)
+            haff(n-1,x,y-divide,divide)
+        
+        
+
 
 def boxdraw(x,y,a,b,color):
     up()
