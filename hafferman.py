@@ -23,7 +23,19 @@ def hafferman(n):
                 xi=xi+xparts
         xi=0
         yi=yi+yparts
-
+def ha(n):
+    if(n==1):
+        boxdraw(window_width()//2,window_height()//2,window_width()//n,window_height()//n,"black")
+    else:
+        boxdraw(window_width()//n,window_height()//n,window_width()//n**2,window_height()//n**2,"black")
+        boxdraw(window_width()//n+2*window_width()//n**2,window_height()//n+window_height()//n**2,window_width()//n**2,window_height()//n**2,"black")
+        boxdraw(window_width()//n+window_width()//n**2,window_height()//n+2*window_height()//n**2,window_width()//n**2,window_height()//n**2,"black")
+        boxdraw(window_width()//n+2*window_width()//n**2,window_height()//n+2*window_height()//n**2,window_width()//n**2,window_height()//n**2,"black")
+        boxdraw(window_width()//n+2*window_width()//n**2,window_height()//n+3*window_height()//n**2,window_width()//n**2,window_height()//n**2,"black")
+        boxdraw(window_width()//n+3*window_width()//n**2,window_height()//n+2*window_height()//n**2,window_width()//n**2,window_height()//n**2,"black")
+        boxdraw(window_width()//n+3*window_width()//n**2,window_height()//n+3*window_height()//n**2,window_width()//n**2,window_height()//n**2,"black")
+        
+        ha(n-1)
 
 def haf(x,y,a,b,n):
     if(n==1):
@@ -59,6 +71,7 @@ def boxdraw(x,y,a,b,color):
     end_fill()
 
 speed(0) 
-hafferman(2)  
-hafferman(5)      
+#hafferman(5)
+#hafferman(2)  
+ha(3)      
 mainloop()

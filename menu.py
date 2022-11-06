@@ -30,7 +30,7 @@ def sierpinsky(n):
             area=0
         else:
             area =((-7*(size**2)/9)-(size**2)*(1/9**n-1))/size*100
-        print(f'Area: {area}%')
+        print(f'Area ocuapada(blanco): {area}%')
     else:
         print('n no valido')
 
